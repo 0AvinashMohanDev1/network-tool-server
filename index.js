@@ -5,6 +5,11 @@ const app = express();
 const port = 3100;
 
 app.use(cors());
+
+app.get("/",(req,res)=>{
+  res.send("Welcome to this project.")
+})
+
 app.get('/scrape', async (req, res) => {
   const { url } = req.query;
   if (!url) {
