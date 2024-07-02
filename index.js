@@ -16,7 +16,9 @@ app.get('/scrape', async (req, res) => {
     return res.status(400).send('Please provide a URL');
   }
 
-  const browser = await puppeteer.launch();
+  const browser = await puppeteer.launch({
+    args: ['--no-sandbox', '--disable-setuid-sandbox']
+  });
   const page = await browser.newPage();
   
   const networkData = {
